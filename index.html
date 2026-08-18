@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="theme-color" content="#052e2b">
+<meta name="application-name" content="Go 4e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Go 4e">
+<meta name="description" content="10 jours pour être prêt pour la 4e. 10 minutes par jour pour réactiver l'essentiel de la 5e.">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Go 4e — 10 jours pour être prêt pour la 4e</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="updateBanner" class="update-banner hidden">
+  <span>🔄 Une nouvelle version est disponible</span>
+  <button id="updateBtn">Mettre à jour</button>
+</div>
+
+<!-- ===================== HOME ===================== -->
+<section id="screen-home" class="screen active">
+  <div class="topbar">
+    <h1>🚀 Go 4e</h1>
+    <p>10 jours pour être prêt pour la 4e</p>
+  </div>
+  <main>
+    <div id="unlockPromoCard" class="card unlock-promo hidden">
+      <b>🔓 Débloque les 9 jours restants</b>
+      <p>Le jour 1 est gratuit. Pour continuer ton défi jusqu'au bout, débloque l'accès complet.</p>
+      <button id="unlockPromoBtn" class="secondary" style="margin-top:8px">Voir les options</button>
+    </div>
+
+    <div class="card">
+      <div class="streak-row">
+        <span id="streakPill" class="streak-pill">🚀 Ton défi commence maintenant</span>
+        <span id="homeDaysCount" class="days-count">0 / 10 jours réalisés</span>
+      </div>
+      <div id="trail" class="trail"></div>
+    </div>
+
+    <div class="card">
+      <div class="quick-links">
+        <button id="dashboardBtn">🧠 Mes réflexes<small>Voir ma progression</small></button>
+        <button id="lifestyleBtn">❤️ Bien démarrer sa 4e<small>Micro-conseils</small></button>
+        <button id="helpBtn">❓ Comment ça marche ?<small>Le principe en 1 minute</small></button>
+        <button id="installBtn">📲 Installer l'appli<small>Sur mon téléphone</small></button>
+      </div>
+    </div>
+
+    <p class="privacy-note">🔒 Pas de compte. Pas de données personnelles. Tu joues, c'est tout.</p>
+    <p class="version-note">Go 4e — <span id="versionLabelHome"></span></p>
+  </main>
+</section>
+
+<!-- ===================== DAY INTRO ===================== -->
+<section id="screen-dayintro" class="screen">
+  <div class="topbar">
+    <div class="back-row">
+      <button class="back-btn" data-back-home>← Accueil</button>
+    </div>
+  </div>
+  <main>
+    <div class="card">
+      <div id="dayEyebrow" class="day-eyebrow">JOUR 1 / 10</div>
+      <div id="dayHero" class="day-hero">🧠 On remet la machine en route</div>
+      <p id="daySub" class="day-sub">Environ 10 minutes.</p>
+
+      <div id="toneShift" class="tone-shift hidden"></div>
+      <div id="finalIntro" class="final-intro hidden"></div>
+
+      <div id="mixList" class="mix-list"></div>
+
+      <button id="goBtn" class="primary">🚀 GO !</button>
+    </div>
+  </main>
+</section>
+
+<!-- ===================== QUIZ ===================== -->
+<section id="screen-quiz" class="screen">
+  <div class="topbar">
+    <div class="back-row">
+      <button class="back-btn" data-back-home>← Quitter</button>
+    </div>
+  </div>
+  <main>
+    <div class="card">
+      <div class="quiz-top"><span id="quizLabel">Quiz du jour</span><span id="quizCounter">1 / 8</span></div>
+      <div class="progress-bar"><i id="progressFill"></i></div>
+      <div id="reviewFlag" class="review-flag hidden"></div>
+      <div id="subjectPill" class="subject-pill">Matière</div>
+      <div id="questionText" class="question-text">Question…</div>
+      <div id="answersBox" class="answers"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <button id="nextBtn" class="primary hidden" style="margin-top:16px">Suivant →</button>
+    </div>
+  </main>
+</section>
+
+<!-- ===================== DAY SUMMARY ===================== -->
+<section id="screen-summary" class="screen">
+  <div class="topbar">
+    <div class="back-row"></div>
+  </div>
+  <main>
+    <div class="card">
+      <div class="summary-hero">
+        <h2 id="summaryDay">🎯 JOUR X TERMINÉ !</h2>
+        <div id="summaryScore" class="summary-score">0<span>/8</span></div>
+      </div>
+      <div id="summarySubjects"></div>
+      <p id="summaryNote" class="recap-note"></p>
+      <div id="summaryUnlockPromo" class="unlock-promo hidden" style="margin-top:14px">
+        <b>🔓 Envie de continuer ?</b>
+        <p>Débloque les 9 jours restants pour aller jusqu'au bout du défi.</p>
+        <button id="summaryUnlockBtn" class="secondary" style="margin-top:8px">Voir les options</button>
+      </div>
+      <button id="continueBtn" class="primary" style="margin-top:16px">→ Continuer demain</button>
+    </div>
+  </main>
+</section>
+
+<!-- ===================== DASHBOARD ===================== -->
+<section id="screen-dashboard" class="screen">
+  <div class="topbar">
+    <div class="back-row">
+      <button class="back-btn" data-back-home>← Accueil</button>
+    </div>
+    <h1 style="font-size:22px;margin-top:8px">🧠 Mes réflexes</h1>
+  </div>
+  <main>
+    <div class="card">
+      <div id="masteryList"></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">🔴 Tes notions à revoir</h3>
+      <div id="weakList" class="weak-list"></div>
+    </div>
+  </main>
+</section>
+
+<!-- ===================== LIFESTYLE ===================== -->
+<section id="screen-lifestyle" class="screen">
+  <div class="topbar">
+    <div class="back-row">
+      <button class="back-btn" data-back-home>← Accueil</button>
+    </div>
+    <h1 style="font-size:22px;margin-top:8px">❤️ Bien démarrer sa 4e</h1>
+  </div>
+  <main>
+    <div class="card">
+      <p style="margin-top:0;font-weight:700;color:var(--muted)">Pas de leçon, juste des micro-conseils pratiques.</p>
+      <div id="tipsList"></div>
+    </div>
+  </main>
+</section>
+
+<!-- ===================== FINAL ===================== -->
+<section id="screen-final" class="screen">
+  <div class="topbar">
+    <div class="back-row"></div>
+  </div>
+  <main>
+    <div class="final-hero card" style="border:0">
+      <div class="cap">🎓 Ton bilan Go 4e</div>
+      <div class="score-big"><span id="finalScore">0</span><span id="finalTotal">/35</span></div>
+      <div class="score-pct" id="finalPct">0% de réussite</div>
+    </div>
+
+    <div class="card">
+      <div class="group-title">🟢 Tes points forts</div>
+      <div id="fortsChips" class="chip-row"></div>
+      <div class="group-title">🟠 À consolider</div>
+      <div id="consoliderChips" class="chip-row"></div>
+      <div class="group-title">🔴 À revoir</div>
+      <div id="revoirChips" class="chip-row"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">🎒 Ton kit de rentrée</h3>
+      <p style="font-weight:700;color:var(--muted);margin-top:-6px">Tu n'as pas besoin de tout revoir. Voici simplement ce qui mérite encore 20 minutes de ton attention.</p>
+      <div id="kitList"></div>
+    </div>
+
+    <div class="card" id="finalMessageCard" style="text-align:center">
+      <p id="finalMessage" style="margin:0;font-weight:800;font-size:15px;line-height:1.4"></p>
+    </div>
+
+    <div class="card" style="text-align:center">
+      <h3 style="margin-top:0">🚀 Ta carte GO 4E</h3>
+      <div class="card-canvas-wrap"><canvas id="shareCanvas"></canvas></div>
+      <button id="downloadCardBtn" class="secondary">📸 Enregistrer ma carte</button>
+    </div>
+
+    <button id="replayDefiBtn" class="secondary" style="margin:0 14px 8px;width:calc(100% - 28px)">🔁 Refaire le grand défi</button>
+    <button id="finalHomeBtn" class="primary" style="margin:0 14px 20px;width:calc(100% - 28px)">Revenir à l'accueil</button>
+  </main>
+</section>
+
+<!-- ===================== DÉBLOCAGE (accès complet) ===================== -->
+<section id="screen-unlock" class="screen">
+  <div class="topbar">
+    <div class="back-row">
+      <button class="back-btn" data-back-home>← Accueil</button>
+    </div>
+    <h1 style="font-size:22px;margin-top:8px">🔓 Débloquer l'accès complet</h1>
+  </div>
+  <main>
+    <div class="card">
+      <p style="margin-top:0;font-weight:700;color:var(--muted)">Le jour 1 est gratuit. Le reste du défi (jours 2 à 10, banque complète et grand défi final) se débloque avec un code d'achat.</p>
+      <button id="buyBtn" class="primary">🛒 Acheter l'accès complet</button>
+      <p style="font-size:12.5px;color:var(--muted);font-weight:650;margin-top:8px">Tu seras redirigé·e vers la page de paiement. Après l'achat, tu reçois un code par email.</p>
+    </div>
+
+    <div class="card">
+      <b style="display:block;margin-bottom:8px;font-size:15px">J'ai déjà un code</b>
+      <input id="licenseInput" type="text" placeholder="Colle ton code ici" class="license-input" autocapitalize="characters" autocomplete="off">
+      <button id="unlockBtn" class="primary" style="margin-top:10px">✅ Débloquer</button>
+      <p id="unlockMsg" class="unlock-msg"></p>
+    </div>
+
+    <p class="privacy-note">🔒 La vérification du code nécessite une connexion internet, une seule fois. Ensuite, l'appli refonctionne entièrement hors-ligne.</p>
+  </main>
+</section>
+
+<!-- ===================== COMMENT ÇA MARCHE ===================== -->
+<section id="screen-help" class="screen">
+  <div class="topbar">
+    <div class="back-row">
+      <button class="back-btn" data-back-home>← Accueil</button>
+    </div>
+    <h1 style="font-size:22px;margin-top:8px">❓ Comment ça marche ?</h1>
+  </div>
+  <main>
+    <div class="card">
+      <div class="help-step"><span class="help-num">1</span><div><b>Un défi de 10 jours</b><p>Chaque jour correspond à une petite séance de 8 questions, environ 10 minutes.</p></div></div>
+      <div class="help-step"><span class="help-num">2</span><div><b>Tout est automatique</b><p>Tu n'as rien à choisir : l'appli compose ta séance (nouvelles notions, rappels, consolidation).</p></div></div>
+      <div class="help-step"><span class="help-num">3</span><div><b>Elle retient tes points faibles</b><p>Une erreur revient vite (le lendemain), une réussite revient plus tard, jusqu'à être « consolidée ».</p></div></div>
+      <div class="help-step"><span class="help-num">4</span><div><b>Le jour 10 est un grand défi</b><p>35 questions qui couvrent tout le programme, en insistant sur tes notions fragiles.</p></div></div>
+      <div class="help-step"><span class="help-num">5</span><div><b>Zéro pression</b><p>Une erreur n'est jamais un échec : c'est juste une notion à retravailler. Pas de compte, pas de classement.</p></div></div>
+    </div>
+  </main>
+</section>
+
+<!-- ===================== INSTALLER ===================== -->
+<section id="screen-install" class="screen">
+  <div class="topbar">
+    <div class="back-row">
+      <button class="back-btn" data-back-home>← Accueil</button>
+    </div>
+    <h1 style="font-size:22px;margin-top:8px">📲 Installer sur mon téléphone</h1>
+  </div>
+  <main>
+    <div class="card">
+      <p style="margin-top:0;font-weight:700;color:var(--muted)">Une fois installée, l'appli fonctionne hors connexion et se lance comme une vraie application, sans passer par le navigateur.</p>
+
+      <div id="installAndroidAuto" class="hidden">
+        <button id="androidInstallBtn" class="primary">📲 Installer maintenant</button>
+      </div>
+
+      <div class="install-block">
+        <b>🤖 Sur Android (Chrome)</b>
+        <ol>
+          <li>Appuie sur le menu ⋮ en haut à droite</li>
+          <li>Choisis « Ajouter à l'écran d'accueil » ou « Installer l'application »</li>
+          <li>Confirme : l'icône apparaît sur ton écran d'accueil</li>
+        </ol>
+      </div>
+
+      <div class="install-block">
+        <b>🍎 Sur iPhone (Safari)</b>
+        <ol>
+          <li>Appuie sur l'icône de partage 📤 en bas de l'écran</li>
+          <li>Choisis « Sur l'écran d'accueil »</li>
+          <li>Confirme : l'icône apparaît comme une vraie appli</li>
+        </ol>
+      </div>
+    </div>
+  </main>
+</section>
+
+<footer>
+  <span id="versionLabel"></span> — aucune donnée personnelle collectée. Progression stockée uniquement sur cet appareil.
+</footer>
+
+<button id="fabHome" class="fab-home hidden" aria-label="Retour à l'accueil">🏠</button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("./sw.js").then(reg=>{
+      // une mise à jour est déjà en attente au chargement
+      if(reg.waiting) showUpdateBanner(reg);
+      reg.addEventListener("updatefound", ()=>{
+        const nw = reg.installing;
+        nw.addEventListener("statechange", ()=>{
+          if(nw.state==="installed" && navigator.serviceWorker.controller){
+            showUpdateBanner(reg);
+          }
+        });
+      });
+    }).catch(()=>{});
+  });
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener("controllerchange", ()=>{
+    if(refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+}
+function showUpdateBanner(reg){
+  const banner = document.getElementById("updateBanner");
+  banner.classList.remove("hidden");
+  document.getElementById("updateBtn").onclick = ()=>{
+    if(reg.waiting) reg.waiting.postMessage({type:"SKIP_WAITING"});
+  };
+}
+
+let deferredInstallPrompt = null;
+window.addEventListener("beforeinstallprompt", (e)=>{
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const box = document.getElementById("installAndroidAuto");
+  if(box) box.classList.remove("hidden");
+});
+document.addEventListener("DOMContentLoaded", ()=>{
+  const btn = document.getElementById("androidInstallBtn");
+  if(btn) btn.onclick = async ()=>{
+    if(!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    document.getElementById("installAndroidAuto").classList.add("hidden");
+  };
+});
+</script>
+</body>
+</html>
