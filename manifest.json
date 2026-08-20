@@ -1,0 +1,13 @@
+{
+"name":"Go 4e — 10 jours pour être prêt pour la 4e",
+"short_name":"Go 4e",
+"start_url":"./",
+"display":"standalone",
+"background_color":"#f2f5fa",
+"theme_color":"#052e2b",
+"orientation":"portrait-primary",
+"icons":[
+{"src":"icon-192.png","sizes":"192x192","type":"image/png"},
+{"src":"icon-512.png","sizes":"512x512","type":"image/png"}
+]
+}
